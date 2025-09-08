@@ -1633,10 +1633,54 @@ async def zhaomu_operation(bp: BasePage):
 from datetime import datetime
 # ...existing code...
 
+def get_chapter_limit():
+    """获取用户输入的章节限制"""
+    while True:
+        user_input = input("请输入测试到第几章 (1-7，直接回车测试所有章节): ").strip()
+        
+        if not user_input:
+            return 7
+        
+        try:
+            chapter_num = int(user_input)
+            if 1 <= chapter_num <= 7:
+                return chapter_num
+            else:
+                print("❌ 请输入1-7之间的数字")
+        except ValueError:
+            print("❌ 请输入有效数字")
+
+async def run_chapters_up_to(bp: BasePage, max_chapter):
+    """执行到指定章节"""
+    chapter_functions = {
+        1: chapter_one,
+        2: chapter_two, 
+        3: chapter_three,
+        4: chapter_four,
+        5: chapter_five,
+        6: chapter_six,
+        7: chapter_seven
+    }
+    
+    for chapter_num in range(1, max_chapter + 1):
+        if chapter_num in chapter_functions:
+            print(f"================第{chapter_num}章开始======================")
+            await chapter_functions[chapter_num](bp)
+            print(f"================第{chapter_num}章结束======================")
+
 @rpc_server()
 async def main(server):
     # 显示端口配置信息
     print(get_port_info())
+    
+    # 获取用户输入
+    max_chapter = get_chapter_limit()
+    
+    # 显示测试信息
+    if max_chapter == 7:
+        print("🎮 开始测试所有章节 (第1-7章)")
+    else:
+        print(f"🎮 开始测试第1-{max_chapter}章")
     
     os.makedirs("logs", exist_ok=True)
     log_file = f"logs/run_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
@@ -1648,15 +1692,10 @@ async def main(server):
     try:
         await bp.custom_command("setCamera ui_layer/UICamera")
 
-        await chapter_one(bp)
-        await chapter_two(bp)
-        await chapter_three(bp)
-        await chapter_four(bp)
-        await chapter_five(bp)
-        await chapter_six(bp)
-        await chapter_seven(bp)
+        # 执行到指定章节
+        await run_chapters_up_to(bp, max_chapter)
 
-        print("=================所有章节结束，脚本运行成功================")
+        print("=================测试完成================")
         send_dingding(log_file)
     except asyncio.TimeoutError:
         send_dingding_error(log_file)

@@ -43,9 +43,14 @@ class PortConfig:
         """从命令行参数获取端口"""
         parser = argparse.ArgumentParser(add_help=False)
         parser.add_argument('--port', '-p', type=int, help='指定端口号')
+        parser.add_argument('--ws-port', type=int, help='指定WebSocket端口号')
         
         # 只解析已知参数，避免影响其他脚本的参数解析
         args, _ = parser.parse_known_args()
+        
+        # 优先使用 --ws-port，其次使用 --port
+        if args.ws_port is not None:
+            return args.ws_port
         return args.port
     
     def _get_port_from_env(self) -> Optional[int]:
@@ -67,9 +72,27 @@ class PortConfig:
     def get_port_info(self) -> str:
         """获取端口配置信息"""
         port = self.get_port()
-        source = "命令行参数" if self._get_port_from_args() is not None else \
-                "环境变量" if self._get_port_from_env() is not None else \
-                "默认值"
+        
+        # 检查端口来源
+        args_port = self._get_port_from_args()
+        env_port = self._get_port_from_env()
+        
+        if args_port is not None:
+            # 检查具体是哪个参数
+            parser = argparse.ArgumentParser(add_help=False)
+            parser.add_argument('--port', '-p', type=int, help='指定端口号')
+            parser.add_argument('--ws-port', type=int, help='指定WebSocket端口号')
+            args, _ = parser.parse_known_args()
+            
+            if args.ws_port is not None:
+                source = "命令行参数 (--ws-port)"
+            else:
+                source = "命令行参数 (--port)"
+        elif env_port is not None:
+            source = "环境变量"
+        else:
+            source = "默认值"
+            
         return f"使用端口: {port} (来源: {source})"
 
 

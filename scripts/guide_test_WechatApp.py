@@ -1,6 +1,7 @@
 import asyncio
 import os
 import sys
+import argparse
 from datetime import datetime
 
 from common.base_page import BasePage
@@ -1634,17 +1635,42 @@ from datetime import datetime
 # ...existing code...
 
 def get_chapter_limit():
-    """获取用户输入的章节限制"""
+    """获取章节限制，优先使用命令行参数，否则要求用户输入"""
+    parser = argparse.ArgumentParser(description='Cocos UI自动化测试脚本')
+    parser.add_argument('--max-chapter', type=int, choices=range(1, 8), 
+                       help='测试到第几章 (1-7)')
+    parser.add_argument('--device-id', type=str, 
+                       help='设备ID')
+    parser.add_argument('--mobile', action='store_true',
+                       help='是否为移动设备测试')
+    parser.add_argument('--device-type', type=str, choices=['android', 'ios'],
+                       help='设备类型 (android/ios)')
+    
+    # 解析命令行参数
+    args, unknown = parser.parse_known_args()
+    
+    # 如果提供了命令行参数，直接使用
+    if args.max_chapter is not None:
+        print(f"📋 使用命令行参数: 测试到第{args.max_chapter}章")
+        if args.device_id:
+            print(f"📱 使用设备ID: {args.device_id}")
+        if args.mobile:
+            print(f"📱 移动设备测试模式")
+        if args.device_type:
+            print(f"📱 设备类型: {args.device_type}")
+        return args.max_chapter, args.device_id, args.mobile, args.device_type
+    
+    # 否则要求用户输入
     while True:
         user_input = input("请输入测试到第几章 (1-7，直接回车测试所有章节): ").strip()
         
         if not user_input:
-            return 7
+            return 7, None, False, None
         
         try:
             chapter_num = int(user_input)
             if 1 <= chapter_num <= 7:
-                return chapter_num
+                return chapter_num, None, False, None
             else:
                 print("❌ 请输入1-7之间的数字")
         except ValueError:
@@ -1674,7 +1700,10 @@ async def main(server):
     print(get_port_info())
     
     # 获取用户输入
-    max_chapter = get_chapter_limit()
+    max_chapter, device_id, is_mobile_device, device_type = get_chapter_limit()
+    
+    # 根据设备类型确定is_ios参数
+    is_ios = device_type == "ios" if device_type else False
     
     # 显示测试信息
     if max_chapter == 7:
@@ -1688,7 +1717,7 @@ async def main(server):
 
     start_time = datetime.now()  # 记录开始时间
 
-    bp = BasePage(server=server, is_mobile_device=True, is_ios=True,)
+    bp = BasePage(server=server, is_mobile_device=is_mobile_device, is_ios=is_ios, device_id=device_id)
     try:
         await bp.custom_command("setCamera ui_layer/UICamera")
 

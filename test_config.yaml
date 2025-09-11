@@ -1,0 +1,64 @@
+# test_config.yaml
+# 测试运行配置
+
+# 运行环境配置
+environment:
+  # 是否在移动端运行 (True: 移动端, False: PC浏览器)
+  is_mobile: True
+  
+  # 设备类型 (android/ios/pc)
+  device_type: "android"
+  
+  # 设备ID (移动端必填，PC端可为空)
+  device_id: "172.16.36.4:5555"
+  
+  # 是否启用截图记录
+  enable_recording: false
+
+# 测试范围配置
+test_scope:
+  # 运行章节 (1-7，null表示运行所有章节)
+  max_chapter: 7
+  
+  # 是否跳过某些章节
+  # skip_chapters: []
+  
+  # 是否只运行特定章节
+  # specific_chapters: []
+
+# 服务器配置
+server:
+  # WebSocket服务器端口
+  ws_port: 5101
+  
+  # 是否自动启动服务器
+  # auto_start_server: true
+
+# 执行脚本配置
+execution:
+  # 要执行的脚本文件 (相对于scripts目录)
+  script_file: "guide_test_Android.py"
+  
+  # 脚本执行参数
+  script_args: []
+  
+  # 是否并行执行多个脚本
+  # parallel_execution: false
+  
+  # 要并行执行的脚本列表
+  # parallel_scripts: []
+
+# 日志配置
+logging:
+  
+  # 日志文件路径
+  log_file: "logs/run_{timestamp}.log"
+  
+
+# 测试数据配置
+test_data:
+  # 测试数据文件路径
+  data_file: "configs/element_data.py"
+  
+  # 是否使用默认测试数据
+  use_default_data: true

@@ -1,4 +1,4 @@
-设备： [<ppadb.device.Device object at 0x160187bb0>]
+设备： [<ppadb.device.Device object at 0x1300243d0>]
 ================第1章开始======================
 ================第一章开始======================
 ====click_a_until_b_appear_list：chapter_one_perform_list====
@@ -55,6 +55,9 @@ click_until_disappear 成功: {'locator': 'ui_layer/view/UIBuildingConstruct/UIB
 click_until_disappear 成功: {'locator': 'ui_layer/view/UISupportPromote/UISupportPromote', 'focus': (0.5, 0.5)}
 ================第一章结束======================
 ================第1章结束======================
+脚本开始时间: 2025-09-12 14:32:39
+脚本结束时间: 2025-09-12 14:36:12
+总耗时: 0:03:33.784653
 ================第2章开始======================
 ================第二章开始======================
 ====click_a_until_b_appear_list：chapter_two_perform_list====
@@ -128,6 +131,9 @@ click_until_disappear 成功: {'locator': 'ui_layer/view/UIActivityXueyuan/UIAct
 click_until_disappear 成功: {'locator': 'ui_layer/view/UIStoryCartoon/UIStoryCartoon', 'focus': (0.5, 0.5)}
 ================第二章结束======================
 ================第2章结束======================
+脚本开始时间: 2025-09-12 14:36:12
+脚本结束时间: 2025-09-12 14:40:00
+总耗时: 0:03:47.380667
 ================第3章开始======================
 ================第三章开始======================
 ====click_a_until_b_appear_list：chapter_three_perform_list====
@@ -199,6 +205,9 @@ click_element_safe 成功:  {'locator': 'ui_layer/view/UISupportManagement/UISup
 click_until_disappear 成功: {'locator': 'ui_layer/view/UIReward/UIReward/text01', 'focus': (0.5, 0.5)}
 ================第三章结束======================
 ================第3章结束======================
+脚本开始时间: 2025-09-12 14:40:00
+脚本结束时间: 2025-09-12 14:43:06
+总耗时: 0:03:06.745398
 ================第4章开始======================
 ================第四章开始======================
 ====click_a_until_b_appear_list：chapter_four_perform_list_1====
@@ -318,8 +327,6 @@ click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/
 click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
 click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
 click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
 判断
 click_until_disappear 成功: {'locator': 'ui_layer/view/UiResQuickUse/UiResQuickUse/_but_confirm:but/_lab_confirm:lab', 'focus': (0.5, 0.5)}
 ====click_a_until_b_appear_list：chapter_four_perform_list_8====
@@ -342,6 +349,9 @@ click_until_disappear 成功: {'locator': 'ui_layer/view/UIBuilding/UIBuilding/b
 8 / 8
 ================第四章结束======================
 ================第4章结束======================
+脚本开始时间: 2025-09-12 14:43:06
+脚本结束时间: 2025-09-12 14:49:09
+总耗时: 0:06:02.544995
 ================第5章开始======================
 ================第五章开始======================
 ====click_a_until_b_appear_list：chapter_five_perform_list====
@@ -461,28 +471,6 @@ click_until_disappear 成功: {'locator': 'ui_layer/view/UIBattleResultWin/UIBat
 ====bag_operation====
 背包可使用物品数量： 7
 click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
-当前点击物品数量: 94
-click_element_safe 94 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UICommonPopup2/UICommonPopup2/_group_check/lay_check/_tog_check:tog/sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UICommonPopup2/UICommonPopup2/layout/_but_confirm:but/_lab_confirm:lab', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
-当前点击物品数量: 73
-click_element_safe 73 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
-当前点击物品数量: 95
-click_element_safe 95 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
-当前点击物品数量: 63
-click_element_safe 63 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
-当前点击物品数量: 17
-click_element_safe 17 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
 当前点击物品数量: 32
 click_element_safe 32 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
 click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
@@ -490,90 +478,41 @@ click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/
 当前点击物品数量: 15
 click_element_safe 15 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
 click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
+当前点击物品数量: 72
+click_element_safe 72 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UICommonPopup2/UICommonPopup2/_group_check/lay_check/_tog_check:tog/sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UICommonPopup2/UICommonPopup2/layout/_but_confirm:but/_lab_confirm:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
+当前点击物品数量: 96
+click_element_safe 96 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
+当前点击物品数量: 94
+click_element_safe 94 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
+当前点击物品数量: 17
+click_element_safe 17 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/middle/_List/view/content/ui_bag_item/temp', 'focus': (0.5, 0.5)}
+当前点击物品数量: 63
+click_element_safe 63 次:{'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_but_add:but/Sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
 click_element_safe 成功:  {'locator': 'ui_layer/view/UIBag/UIBag/bottom/_closeBtn', 'focus': (0.5, 0.5)}
 ====click_a_until_b_appear_list：chapter_five_perform_list_10====
 1 / 10
-2 / 10
-3 / 10
-4 / 10
-5 / 10
-6 / 10
-7 / 10
-8 / 10
-9 / 10
-10 / 10
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-====click_a_until_b_appear_list：chapter_five_perform_list_11====
-1 / 1
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-====click_a_until_b_appear_list：chapter_five_perform_list_12====
-1 / 1
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_task/_but_task:but/_task_effect', 'focus': (0.5, 0.2)}
-====click_a_until_b_appear_list：chapter_five_perform_list_13====
-1 / 4
-2 / 4
-3 / 4
-4 / 4
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-====click_a_until_b_appear_list：chapter_five_perform_list_14====
-1 / 3
-2 / 3
-3 / 3
-click_element_safe 成功:  {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-click_element_safe 成功:  {'locator': 'ui_layer/view/UICommonPopup2/UICommonPopup2/_group_check/lay_check/_tog_check:tog/sprite', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UICommonPopup2/UICommonPopup2/layout/_but_confirm:but/_lab_confirm:lab', 'focus': (0.5, 0.5)}
-====click_a_until_b_appear_list：chapter_five_perform_list_15====
-1 / 4
-2 / 4
-3 / 4
-4 / 4
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-====click_a_until_b_appear_list：chapter_five_perform_list_16====
-1 / 1
-click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_task/_but_task:but/_task_effect', 'focus': (0.5, 0.2)}
-====click_a_until_b_appear_list：chapter_five_perform_list_17====
-1 / 9
-2 / 9
-3 / 9
-4 / 9
-5 / 9
-6 / 9
-7 / 9
-8 / 9
-9 / 9
-================第五章结束======================
-================第5章结束======================
-================第6章开始======================
-================第六章开始======================
-====click_a_until_b_appear_list：chapter_six_perform_list_0====
-1 / 7
-2 / 7
-3 / 7
-4 / 7
-5 / 7
-6 / 7
-7 / 7
-click_until_disappear 成功: {'locator': 'ui_layer/view/UIStoryDialogue/UIStoryDialogue/_dialogNode/dialog_item/group_continue/lab_continue:lab', 'focus': (1, 0.5)}
-====click_a_until_b_appear_list：chapter_six_perform_list_1====
-1 / 3
-2 / 3
-3 / 3
-click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_top/_but_utc_time:but/_lab_utc_time:lab', 'focus': (0.5, 0.5)}
-====click_a_until_b_appear_list：chapter_six_perform_list_2====
-1 / 12
-2 / 12
-3 / 12
-4 / 12
-5 / 12
 未知异常: no close frame received or sent
-脚本开始时间: 2025-09-09 21:50:20
-脚本结束时间: 2025-09-09 22:52:01
-总耗时: 1:01:40.936561
+脚本开始时间: 2025-09-12 14:32:38
+脚本结束时间: 2025-09-12 14:56:55
+总耗时: 0:24:16.712882
+测试结束
+                
+==================== 测试报告生成完成 ====================
+📄 HTML报告已生成: reports/test_report_20250912_145655.html
+💡 请在浏览器中打开查看详细报告
+
+========================================================
+
+

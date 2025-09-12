@@ -1691,8 +1691,14 @@ async def run_chapters_up_to(bp: BasePage, max_chapter):
     for chapter_num in range(1, max_chapter + 1):
         if chapter_num in chapter_functions:
             print(f"================第{chapter_num}章开始======================")
+            start_time = datetime.now()  # 记录开始时间
             await chapter_functions[chapter_num](bp)
             print(f"================第{chapter_num}章结束======================")
+            end_time = datetime.now()  # 记录结束时间
+            duration = end_time - start_time
+            print(f"第{chapter_num}章开始时间: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"第{chapter_num}章结束时间: {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
+            print(f"第{chapter_num}章总耗时: {str(duration)}")
 
 @rpc_server()
 async def main(server):
@@ -1724,7 +1730,7 @@ async def main(server):
         # 执行到指定章节
         await run_chapters_up_to(bp, max_chapter)
 
-        print("=================测试完成================")
+        print("=================测试完成================")  # 添加这行来触发报告生成
         send_dingding(log_file)
     except asyncio.TimeoutError:
         send_dingding_error(log_file)
@@ -1740,6 +1746,7 @@ async def main(server):
         print(f"脚本开始时间: {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"脚本结束时间: {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"总耗时: {str(duration)}")
+        print("测试结束")  # 添加这行来触发报告生成
 
 if __name__ == "__main__":
     main()

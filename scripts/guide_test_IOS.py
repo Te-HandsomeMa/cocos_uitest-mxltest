@@ -1725,6 +1725,7 @@ async def main(server):
         await run_chapters_up_to(bp, max_chapter)
 
         print("=================测试完成================")
+        print("测试结束")  # 添加这行来触发报告生成
         send_dingding(log_file)
     except asyncio.TimeoutError:
         send_dingding_error(log_file)

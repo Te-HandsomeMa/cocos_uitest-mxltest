@@ -131,11 +131,11 @@ class LogParser:
                     self.data['chapters'].append(current_chapter)
                 
                 # 解析章节开始时间（在章节开始后）
-                elif '脚本开始时间:' in line and current_chapter and not current_chapter.get('start_time'):
+                elif ('脚本开始时间:' in line or re.search(r'第\d+章开始时间:', line)) and current_chapter and not current_chapter.get('start_time'):
                     self._parse_chapter_start_time(line, current_chapter)
                 
                 # 解析章节结束时间（在章节结束前）
-                elif '脚本结束时间:' in line and current_chapter and not current_chapter.get('end_time'):
+                elif ('脚本结束时间:' in line or re.search(r'第\d+章结束时间:', line)) and current_chapter and not current_chapter.get('end_time'):
                     self._parse_chapter_end_time(line, current_chapter)
                 
                 # 解析章节步骤进度
@@ -151,7 +151,7 @@ class LogParser:
                         current_chapter = None
                 
                 # 解析章节结束时间（在章节结束后，用于处理没有章节结束标记的情况）
-                elif '脚本结束时间:' in line and not current_chapter:
+                elif ('脚本结束时间:' in line or re.search(r'第\d+章结束时间:', line)) and not current_chapter:
                     # 查找最后一个章节并设置结束时间
                     if self.data['chapters']:
                         last_chapter = self.data['chapters'][-1]
@@ -159,7 +159,7 @@ class LogParser:
                             self._parse_chapter_end_time(line, last_chapter)
                 
                 # 解析章节结束时间（在章节结束后，用于处理已完成章节的结束时间）
-                elif '脚本结束时间:' in line and completed_chapters:
+                elif ('脚本结束时间:' in line or re.search(r'第\d+章结束时间:', line)) and completed_chapters:
                     # 查找最后一个没有结束时间的已完成章节
                     for chapter in reversed(completed_chapters):
                         if not chapter.get('end_time'):
@@ -167,7 +167,7 @@ class LogParser:
                             break
                 
                 # 解析章节开始时间（在章节结束后，用于处理已完成章节的开始时间）
-                elif '脚本开始时间:' in line and completed_chapters:
+                elif ('脚本开始时间:' in line or re.search(r'第\d+章开始时间:', line)) and completed_chapters:
                     # 查找最后一个没有开始时间的已完成章节
                     for chapter in reversed(completed_chapters):
                         if not chapter.get('start_time'):
@@ -205,7 +205,7 @@ class LogParser:
                     self.data['errors'].append(error)
                 
                 # 解析测试结束
-                elif '脚本结束时间:' in line:
+                elif ('脚本结束时间:' in line or re.search(r'第\d+章结束时间:', line)):
                     self._parse_test_end(line)
                 elif '总耗时:' in line:
                     self._parse_test_end(line)
@@ -239,15 +239,15 @@ class LogParser:
                     break
             
             if chapter_end_line is not None:
-                # 在章节结束标记后查找开始和结束时间
-                for i in range(chapter_end_line + 1, min(chapter_end_line + 10, len(lines))):
+                # 在章节结束标记前查找开始和结束时间（向前搜索）
+                for i in range(max(0, chapter_end_line - 10), chapter_end_line):
                     line = lines[i].strip()
-                    if '脚本开始时间:' in line and not chapter.get('start_time'):
-                        time_match = re.search(r'脚本开始时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
+                    if ('脚本开始时间:' in line or re.search(r'第\d+章开始时间:', line)) and not chapter.get('start_time'):
+                        time_match = re.search(r'(?:脚本开始时间:|第\d+章开始时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
                         if time_match:
                             chapter['start_time'] = time_match.group(1)
-                    elif '脚本结束时间:' in line and not chapter.get('end_time'):
-                        time_match = re.search(r'脚本结束时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
+                    elif ('脚本结束时间:' in line or re.search(r'第\d+章结束时间:', line)) and not chapter.get('end_time'):
+                        time_match = re.search(r'(?:脚本结束时间:|第\d+章结束时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
                         if time_match:
                             chapter['end_time'] = time_match.group(1)
                             break
@@ -293,13 +293,13 @@ class LogParser:
     
     def _parse_chapter_start_time(self, line: str, chapter: Dict[str, Any]):
         """解析章节开始时间"""
-        time_match = re.search(r'脚本开始时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
+        time_match = re.search(r'(?:脚本开始时间:|第\d+章开始时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
         if time_match:
             chapter['start_time'] = time_match.group(1)
     
     def _parse_chapter_end_time(self, line: str, chapter: Dict[str, Any]):
         """解析章节结束时间"""
-        time_match = re.search(r'脚本结束时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
+        time_match = re.search(r'(?:脚本结束时间:|第\d+章结束时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
         if time_match:
             chapter['end_time'] = time_match.group(1)
             # 计算章节耗时
@@ -427,7 +427,7 @@ class LogParser:
     def _parse_test_end(self, line: str):
         """解析测试结束信息"""
         # 查找脚本结束时间
-        time_match = re.search(r'脚本结束时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
+        time_match = re.search(r'(?:脚本结束时间:|第\d+章结束时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
         if time_match:
             self.data['test_info']['end_time'] = time_match.group(1)
         
@@ -454,7 +454,7 @@ class LogParser:
                     prev_line = lines[j].strip()
                     
                     # 查找脚本结束时间
-                    time_match = re.search(r'脚本结束时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', prev_line)
+                    time_match = re.search(r'(?:脚本结束时间:|第\d+章结束时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', prev_line)
                     if time_match:
                         self.data['test_info']['end_time'] = time_match.group(1)
                     
@@ -469,8 +469,8 @@ class LogParser:
         if not test_end_found:
             for i in range(len(lines) - 1, -1, -1):
                 line = lines[i].strip()
-                if '脚本结束时间:' in line:
-                    time_match = re.search(r'脚本结束时间: (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
+                if ('脚本结束时间:' in line or re.search(r'第\d+章结束时间:', line)):
+                    time_match = re.search(r'(?:脚本结束时间:|第\d+章结束时间:) (\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})', line)
                     if time_match:
                         self.data['test_info']['end_time'] = time_match.group(1)
                         break

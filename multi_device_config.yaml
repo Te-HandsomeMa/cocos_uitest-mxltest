@@ -1,0 +1,50 @@
+# multi_device_config.yaml
+# 多设备测试运行配置
+# 执行命令：python3 run_tests.py --config multi_device_config.yaml
+
+# 多设备配置
+devices:
+  - name: "Android设备1"
+    device_id: "172.16.37.174:5555"
+    device_type: "android"
+    ws_port: 5101
+    max_chapter: 7
+    skip_chapters: []
+    script_file: "guide_test_Android_Wechat.py"
+    enable_recording: false
+    
+    
+  - name: "Android设备2"
+    device_id: "10CE351383000UC"
+    device_type: "android"
+    ws_port: 5102
+    max_chapter: 5
+    skip_chapters: []
+    script_file: "guide_test_Android_Wechat.py"
+    enable_recording: false
+
+  - name: "Android设备3"
+    device_id: "172.16.36.4:5555"
+    device_type: "android"
+    ws_port: 5103
+    max_chapter: 5
+    skip_chapters: []
+    script_file: "guide_test_Android_Wechat.py"
+    enable_recording: false
+
+# 执行策略配置
+execution:
+  mode: "parallel"  # parallel并行模式 | sequential串行模式
+  max_concurrent: 5  # 最大并发设备数
+  wait_for_completion: true  # 是否等待所有设备完成
+
+# 全局配置（向后兼容）
+global_config:
+  server:
+    ws_port: 5101  # 默认端口，会被设备特定端口覆盖
+  logging:
+    log_level: "INFO"
+    auto_generate_report: true
+  test_data:
+    data_file: "configs/element_data.py"
+    use_default_data: true

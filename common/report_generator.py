@@ -38,6 +38,48 @@ class LogParser:
         self.total_operations = 0
         self.planned_chapters = self._load_planned_chapters()
         self.expected_steps = self._load_expected_steps()
+        self.device_info = self._extract_device_info()
+    
+    def _extract_device_info(self) -> Dict[str, str]:
+        """从日志文件中提取设备信息"""
+        device_info = {
+            'device_name': '未知设备',
+            'device_id': '未知',
+            'device_type': '未知',
+            'ws_port': '未知'
+        }
+        
+        try:
+            with open(self.log_file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+                
+                # 从设备头部信息中提取
+                device_name_match = re.search(r'设备名称:\s*(.+)', content)
+                if device_name_match:
+                    device_info['device_name'] = device_name_match.group(1).strip()
+                
+                device_id_match = re.search(r'设备ID:\s*(.+)', content)
+                if device_id_match:
+                    device_info['device_id'] = device_id_match.group(1).strip()
+                
+                device_type_match = re.search(r'设备类型:\s*(.+)', content)
+                if device_type_match:
+                    device_info['device_type'] = device_type_match.group(1).strip()
+                
+                ws_port_match = re.search(r'WebSocket端口:\s*(.+)', content)
+                if ws_port_match:
+                    device_info['ws_port'] = ws_port_match.group(1).strip()
+                
+                # 从设备标识前缀中提取（备用方法）
+                device_prefix_match = re.search(r'\[DEVICE:([^_]+)_([^\]]+)\]', content)
+                if device_prefix_match:
+                    device_info['device_type'] = device_prefix_match.group(1)
+                    device_info['device_id'] = device_prefix_match.group(2).replace('_', ':').replace('_', '.')
+                    
+        except Exception as e:
+            print(f"⚠️  提取设备信息失败: {e}")
+        
+        return device_info
     
     def _load_planned_chapters(self) -> int:
         """从配置文件加载计划测试的章节数"""
@@ -116,6 +158,16 @@ class LogParser:
                 if not line:
                     continue
                 
+                # 过滤设备专用日志的设备标识前缀
+                # 格式: [DEVICE:android_172_16_37_174_5555] 原始日志内容
+                if line.startswith('[DEVICE:'):
+                    # 找到第一个]后的内容
+                    prefix_end = line.find(']')
+                    if prefix_end != -1:
+                        line = line[prefix_end + 1:].strip()
+                    else:
+                        continue  # 如果格式不正确，跳过这行
+                
                 # 解析计划执行的章节数
                 if '使用命令行参数: 测试到第' in line:
                     self._parse_planned_chapters(line)
@@ -124,8 +176,8 @@ class LogParser:
                 elif '脚本开始时间:' in line and not current_chapter:
                     self._parse_test_start(line)
                 
-                # 解析章节开始（只匹配数字格式，避免重复）
-                elif re.match(r'================第\d+章开始======================', line):
+                # 解析章节开始（支持中文数字和阿拉伯数字）
+                elif re.match(r'================第[一二三四五六七八九十\d]+章开始======================', line):
                     current_chapter = self._parse_chapter_start(line, line_num)
                     chapter_start_line = line_num
                     self.data['chapters'].append(current_chapter)
@@ -276,10 +328,34 @@ class LogParser:
         if time_match:
             self.data['test_info']['start_time'] = time_match.group(1)
     
+    def _chinese_to_arabic(self, chinese_num: str) -> int:
+        """将中文数字转换为阿拉伯数字"""
+        chinese_to_arabic_map = {
+            '一': 1, '二': 2, '三': 3, '四': 4, '五': 5,
+            '六': 6, '七': 7, '八': 8, '九': 9, '十': 10
+        }
+        
+        # 如果是纯阿拉伯数字，直接转换
+        if chinese_num.isdigit():
+            return int(chinese_num)
+        
+        # 如果是中文数字，进行转换
+        if chinese_num in chinese_to_arabic_map:
+            return chinese_to_arabic_map[chinese_num]
+        
+        # 默认返回0
+        return 0
+    
     def _parse_chapter_start(self, line: str, line_num: int) -> Dict[str, Any]:
         """解析章节开始"""
-        chapter_match = re.search(r'第(\d+)章', line)
-        chapter_num = int(chapter_match.group(1)) if chapter_match else 0
+        # 支持中文数字和阿拉伯数字
+        chapter_match = re.search(r'第([一二三四五六七八九十\d]+)章', line)
+        if chapter_match:
+            chapter_str = chapter_match.group(1)
+            # 转换中文数字为阿拉伯数字
+            chapter_num = self._chinese_to_arabic(chapter_str)
+        else:
+            chapter_num = 0
         
         return {
             'number': chapter_num,
@@ -630,6 +706,13 @@ class HTMLReportGenerator:
         template = template.replace('{{TEST_END_TIME}}', data['test_info'].get('end_time', ''))
         template = template.replace('{{TOTAL_DURATION}}', data['test_info'].get('total_duration', ''))
         
+        # 设备信息
+        device_info = data.get('device_info', {})
+        template = template.replace('{{DEVICE_NAME}}', device_info.get('device_name', '未知设备'))
+        template = template.replace('{{DEVICE_ID}}', device_info.get('device_id', '未知'))
+        template = template.replace('{{DEVICE_TYPE}}', device_info.get('device_type', '未知'))
+        template = template.replace('{{WS_PORT}}', device_info.get('ws_port', '未知'))
+        
         # 汇总数据
         summary = data['summary']
         template = template.replace('{{COMPLETED_CHAPTERS}}', str(summary['completed_chapters']))
@@ -949,6 +1032,14 @@ class HTMLReportGenerator:
             <div class="subtitle">
                 测试时间: {{TEST_START_TIME}} - {{TEST_END_TIME}} | 总耗时: {{TOTAL_DURATION}}
             </div>
+            <div class="device-info" style="margin-top: 15px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 8px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.95em;">
+                    <div><strong>设备名称:</strong> {{DEVICE_NAME}}</div>
+                    <div><strong>设备ID:</strong> {{DEVICE_ID}}</div>
+                    <div><strong>设备类型:</strong> {{DEVICE_TYPE}}</div>
+                    <div><strong>WebSocket端口:</strong> {{WS_PORT}}</div>
+                </div>
+            </div>
         </div>
         <div class="stats-grid">
             <div class="stat-card success-rate-card">
@@ -1049,7 +1140,7 @@ class TestReportGenerator:
             self.log_file_path = self._find_latest_log_file()
         
         if self.log_file_path:
-            self.parser = LogParser(self.log_file_path)
+            self.parser = LogParser(self.log_file_path, "test_config.yaml")
         else:
             raise ValueError("未找到日志文件")
     
@@ -1059,16 +1150,25 @@ class TestReportGenerator:
         if not os.path.exists(logs_dir):
             return None
         
-        # 查找所有run_*.log文件
-        log_pattern = os.path.join(logs_dir, "run_*.log")
-        log_files = glob.glob(log_pattern)
+        # 优先查找设备专用日志文件
+        device_log_pattern = os.path.join(logs_dir, "device_*.log")
+        device_log_files = glob.glob(device_log_pattern)
         
-        if not log_files:
-            return None
+        if device_log_files:
+            # 按修改时间排序，返回最新的设备日志文件
+            latest_file = max(device_log_files, key=os.path.getmtime)
+            return latest_file
         
-        # 按修改时间排序，返回最新的文件
-        latest_file = max(log_files, key=os.path.getmtime)
-        return latest_file
+        # 如果没有设备日志文件，查找传统的run_*.log文件
+        run_log_pattern = os.path.join(logs_dir, "run_*.log")
+        run_log_files = glob.glob(run_log_pattern)
+        
+        if run_log_files:
+            # 按修改时间排序，返回最新的文件
+            latest_file = max(run_log_files, key=os.path.getmtime)
+            return latest_file
+        
+        return None
     
     @staticmethod
     def find_latest_log_file(logs_dir: str = "logs") -> Optional[str]:
@@ -1076,16 +1176,25 @@ class TestReportGenerator:
         if not os.path.exists(logs_dir):
             return None
         
-        # 查找所有run_*.log文件
-        log_pattern = os.path.join(logs_dir, "run_*.log")
-        log_files = glob.glob(log_pattern)
+        # 优先查找设备专用日志文件
+        device_log_pattern = os.path.join(logs_dir, "device_*.log")
+        device_log_files = glob.glob(device_log_pattern)
         
-        if not log_files:
-            return None
+        if device_log_files:
+            # 按修改时间排序，返回最新的设备日志文件
+            latest_file = max(device_log_files, key=os.path.getmtime)
+            return latest_file
         
-        # 按修改时间排序，返回最新的文件
-        latest_file = max(log_files, key=os.path.getmtime)
-        return latest_file
+        # 如果没有设备日志文件，查找传统的run_*.log文件
+        run_log_pattern = os.path.join(logs_dir, "run_*.log")
+        run_log_files = glob.glob(run_log_pattern)
+        
+        if run_log_files:
+            # 按修改时间排序，返回最新的文件
+            latest_file = max(run_log_files, key=os.path.getmtime)
+            return latest_file
+        
+        return None
     
     def generate_report(self) -> str:
         """生成测试报告"""
@@ -1093,9 +1202,14 @@ class TestReportGenerator:
             # 解析日志文件
             log_data = self.parser.parse()
             
-            # 生成输出文件名
+            # 添加设备信息到日志数据
+            log_data['device_info'] = self.parser.device_info
+            
+            # 生成输出文件名（包含设备信息）
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            output_filename = f"test_report_{timestamp}.html"
+            device_type = self.parser.device_info.get('device_type', 'unknown')
+            device_id = self.parser.device_info.get('device_id', 'unknown').replace(':', '_').replace('.', '_')
+            output_filename = f"test_report_{device_type}_{device_id}_{timestamp}.html"
             output_path = os.path.join(self.output_dir, output_filename)
             
             # 生成HTML报告

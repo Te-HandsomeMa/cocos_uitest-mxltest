@@ -1,0 +1,482 @@
+
+================================================================================
+设备信息:
+├── 设备名称: Android设备1
+├── 设备ID: 172.16.37.174:5555
+├── 设备类型: android
+├── WebSocket端口: 5101
+├── 日志文件: /Users/te_ma/项目/三冰自动化测试平台/测试脚本/cocos_uitest-mxltest/logs/device_android_172_16_37_174_5555_5101_20250919_175917.log
+└── 开始时间: 2025-09-19 17:59:17
+================================================================================
+
+/Users/te_ma/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+使用端口: 5101 (来源: 命令行参数 (--ws-port))
+RPC Server running at ws://0.0.0.0:5101
+使用端口: 5101 (来源: 命令行参数 (--ws-port))
+使用命令行参数: 测试到第7章节
+使用设备id: 172.16.37.174:5555
+在移动端运行
+使用WebSocket端口: 5101
+设备： [<ppadb.device.Device object at 0x13f925370>, <ppadb.device.Device object at 0x13f9253d0>, <ppadb.device.Device object at 0x13f925310>]
+=================第1章节开始================
+================第一章开始======================
+====click_a_until_b_appear_list：chapter_one_perform_list====
+1 / 29
+2 / 29
+3 / 29
+4 / 29
+5 / 29
+6 / 29
+7 / 29
+8 / 29
+9 / 29
+10 / 29
+11 / 29
+12 / 29
+13 / 29
+14 / 29
+15 / 29
+16 / 29
+17 / 29
+18 / 29
+19 / 29
+20 / 29
+21 / 29
+22 / 29
+23 / 29
+24 / 29
+25 / 29
+26 / 29
+27 / 29
+28 / 29
+29 / 29
+click_until_disappear 成功: {'locator': 'ui_layer/view/UiMission/UiMission/title/_but_close:but/Sprite', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_left_bottom/_task/_but_task:but/_task_effect', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_one_perform_list_1====
+1 / 1
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBuildingConstruct/UIBuildingConstruct/bg/_group_construct/_but_build:but/label', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_one_perform_list_2====
+1 / 7
+2 / 7
+3 / 7
+4 / 7
+5 / 7
+6 / 7
+7 / 7
+====click_a_until_b_appear_list：chapter_one_perform_list_3====
+1 / 11
+2 / 11
+3 / 11
+4 / 11
+5 / 11
+6 / 11
+7 / 11
+8 / 11
+9 / 11
+10 / 11
+11 / 11
+click_until_disappear 成功: {'locator': 'ui_layer/view/UISupportPromote/UISupportPromote', 'focus': (0.5, 0.5)}
+================第一章结束======================
+=================第1章节结束================
+第1章节开始时间: 2025-09-19 17:59:24
+第1章节结束时间: 2025-09-19 18:03:06
+第1章节总耗时: 0:03:41.250541
+=================第2章节开始================
+================第二章开始======================
+====click_a_until_b_appear_list：chapter_two_perform_list====
+1 / 31
+2 / 31
+3 / 31
+4 / 31
+5 / 31
+6 / 31
+7 / 31
+8 / 31
+9 / 31
+10 / 31
+11 / 31
+12 / 31
+13 / 31
+14 / 31
+15 / 31
+16 / 31
+17 / 31
+18 / 31
+19 / 31
+20 / 31
+21 / 31
+22 / 31
+23 / 31
+24 / 31
+25 / 31
+26 / 31
+27 / 31
+28 / 31
+29 / 31
+30 / 31
+31 / 31
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/ui_support_work_building/arrange/_unlock/_but_building_add:but/Sprite', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_two_perform_list_1====
+1 / 16
+2 / 16
+3 / 16
+4 / 16
+5 / 16
+6 / 16
+7 / 16
+8 / 16
+9 / 16
+10 / 16
+11 / 16
+12 / 16
+13 / 16
+14 / 16
+15 / 16
+16 / 16
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIActivityXueyuan/UIActivityXueyuan/anim_pop/_bg/_btn_close:but', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_two_perform_list_2====
+1 / 16
+2 / 16
+3 / 16
+4 / 16
+5 / 16
+6 / 16
+7 / 16
+8 / 16
+9 / 16
+10 / 16
+11 / 16
+12 / 16
+13 / 16
+14 / 16
+15 / 16
+16 / 16
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIStoryCartoon/UIStoryCartoon', 'focus': (0.5, 0.5)}
+================第二章结束======================
+=================第2章节结束================
+第2章节开始时间: 2025-09-19 18:03:06
+第2章节结束时间: 2025-09-19 18:07:16
+第2章节总耗时: 0:04:10.754692
+=================第3章节开始================
+================第三章开始======================
+====click_a_until_b_appear_list：chapter_three_perform_list====
+1 / 10
+2 / 10
+3 / 10
+4 / 10
+5 / 10
+6 / 10
+7 / 10
+8 / 10
+9 / 10
+10 / 10
+====click_a_until_b_appear_list：chapter_three_perform_list_1====
+1 / 37
+2 / 37
+3 / 37
+4 / 37
+5 / 37
+6 / 37
+7 / 37
+8 / 37
+9 / 37
+10 / 37
+11 / 37
+12 / 37
+13 / 37
+14 / 37
+15 / 37
+16 / 37
+17 / 37
+18 / 37
+19 / 37
+20 / 37
+21 / 37
+22 / 37
+23 / 37
+24 / 37
+25 / 37
+26 / 37
+27 / 37
+28 / 37
+29 / 37
+30 / 37
+31 / 37
+32 / 37
+33 / 37
+34 / 37
+35 / 37
+36 / 37
+37 / 37
+click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_top_res/_but_support:but/_support_anim', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UISupportManagement/UISupportManagement/main/_but_close:but/_n_spr_closse_icon:spr', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_three_perform_list_2====
+1 / 14
+2 / 14
+3 / 14
+4 / 14
+5 / 14
+6 / 14
+7 / 14
+8 / 14
+9 / 14
+10 / 14
+11 / 14
+12 / 14
+13 / 14
+14 / 14
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIReward/UIReward/text01', 'focus': (0.5, 0.5)}
+================第三章结束======================
+=================第3章节结束================
+第3章节开始时间: 2025-09-19 18:07:16
+第3章节结束时间: 2025-09-19 18:10:41
+第3章节总耗时: 0:03:24.981758
+=================第4章节开始================
+================第四章开始======================
+====click_a_until_b_appear_list：chapter_four_perform_list_1====
+1 / 23
+2 / 23
+3 / 23
+4 / 23
+5 / 23
+6 / 23
+7 / 23
+8 / 23
+9 / 23
+10 / 23
+11 / 23
+12 / 23
+13 / 23
+14 / 23
+15 / 23
+16 / 23
+17 / 23
+18 / 23
+19 / 23
+20 / 23
+21 / 23
+22 / 23
+23 / 23
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_use_item/ui_res_use_item/bottom/title/_but_close:but/sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroInfo/UIHeroInfo/bottom-001/_btn_back', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_four_perform_list_2====
+1 / 3
+2 / 3
+3 / 3
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBattleEmbattle/UIBattleEmbattle/_but_quick_formation:but/_lab_quick_formation:lab', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_four_perform_list_3====
+1 / 16
+2 / 16
+3 / 16
+4 / 16
+5 / 16
+6 / 16
+7 / 16
+8 / 16
+9 / 16
+10 / 16
+11 / 16
+12 / 16
+13 / 16
+14 / 16
+15 / 16
+16 / 16
+click_until_disappear 成功: {'locator': 'ui_layer/view/UiFirstPay/UiFirstPay/_tree/_but_close', 'focus': (0.5, 0)}
+====click_a_until_b_appear_list：chapter_four_perform_list_4====
+1 / 15
+2 / 15
+3 / 15
+4 / 15
+5 / 15
+6 / 15
+7 / 15
+8 / 15
+9 / 15
+10 / 15
+11 / 15
+12 / 15
+13 / 15
+14 / 15
+15 / 15
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_use_item/ui_res_use_item/bottom/title/_but_close:but/sprite', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIHeroList/UIHeroList/bottom/_closeBtn', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_four_perform_list_5====
+1 / 2
+2 / 2
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_use_item/ui_res_use_item/bottom/title/_but_close:but/sprite', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroList/UIHeroList/bottom/_closeBtn', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_four_perform_list_6====
+1 / 14
+2 / 14
+3 / 14
+4 / 14
+5 / 14
+6 / 14
+7 / 14
+8 / 14
+9 / 14
+10 / 14
+11 / 14
+12 / 14
+13 / 14
+14 / 14
+click_element_safe
+click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_left_bottom/_task/_but_task:but/ui_xinshou', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UiSupportWorkAdopt/UiSupportWorkAdopt/main/_btn_adopt:but/_lab_adopt:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_left_bottom/_task/_but_task:but/ui_xinshou', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UiSupportWorkAdopt/UiSupportWorkAdopt/main/_btn_adopt:but/_lab_adopt:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuildingConstruct/UIBuildingConstruct/bg/_group_construct/_but_build:but/label', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_left_bottom/_task/_but_task:but/ui_xinshou', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UiSupportWorkAdopt/UiSupportWorkAdopt/main/_btn_adopt:but/_lab_adopt:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UILevelHUD/UILevelHUD/_main/_left_bottom/_task/_but_task:but/ui_xinshou', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_four_perform_list_7====
+1 / 12
+2 / 12
+3 / 12
+4 / 12
+5 / 12
+6 / 12
+7 / 12
+8 / 12
+9 / 12
+10 / 12
+11 / 12
+12 / 12
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_group/_building_upgrade_layout/ui_building_item_upgrade/_buttom/_but_upgrade:but/_lab_upgradeBtn:lab', 'focus': (0.5, 0.5)}
+判断
+click_until_disappear 成功: {'locator': 'ui_layer/view/UiResQuickUse/UiResQuickUse/_but_confirm:but/_lab_confirm:lab', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_four_perform_list_8====
+1 / 1
+click_element_safe 成功:  {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_but_open_upgrade:but', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UISlgBuildingUpgrade/UISlgBuildingUpgrade/main/_group_buttons/_but_use_diamond:but/label', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIBuilding/UIBuilding/bg/_task/_but_task:but/_task_effect', 'focus': (0.5, 0.2)}
+====click_a_until_b_appear_list：chapter_four_perform_list_9====
+1 / 3
+2 / 3
+3 / 3
+====click_a_until_b_appear_list：chapter_four_perform_list_10====
+1 / 7
+2 / 7
+3 / 7
+4 / 7
+5 / 7
+6 / 7
+7 / 7
+================第四章结束======================
+=================第4章节结束================
+第4章节开始时间: 2025-09-19 18:10:41
+第4章节结束时间: 2025-09-19 18:17:38
+第4章节总耗时: 0:06:56.746019
+=================第5章节开始================
+================第五章开始======================
+====click_a_until_b_appear_list：chapter_five_perform_list====
+1 / 36
+2 / 36
+3 / 36
+4 / 36
+5 / 36
+6 / 36
+7 / 36
+8 / 36
+9 / 36
+10 / 36
+11 / 36
+12 / 36
+13 / 36
+14 / 36
+15 / 36
+16 / 36
+17 / 36
+18 / 36
+19 / 36
+20 / 36
+21 / 36
+22 / 36
+23 / 36
+24 / 36
+25 / 36
+26 / 36
+27 / 36
+28 / 36
+29 / 36
+30 / 36
+31 / 36
+32 / 36
+33 / 36
+34 / 36
+35 / 36
+36 / 36
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_use_item/ui_res_use_item/bottom/title/_but_close:but/sprite', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_five_perform_list_0====
+1 / 2
+2 / 2
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_get_more_item/ui_res_get_more_item/title/_but_close:but', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroRankUp/UIHeroRankUp/bg/title/_button_close', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroInfo/UIHeroInfo/bottom-001/_btn_back', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_five_perform_list_1====
+1 / 2
+2 / 2
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_use_item/ui_res_use_item/bottom/title/_but_close:but/sprite', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_five_perform_list_2====
+1 / 2
+2 / 2
+click_until_disappear 成功: {'locator': 'ui_layer/view/ui_res_get_more_item/ui_res_get_more_item/title/_but_close:but', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroRankUp/UIHeroRankUp/bg/title/_button_close', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroInfo/UIHeroInfo/bottom-001/_btn_back', 'focus': (0.5, 0.5)}
+click_until_disappear 成功: {'locator': 'ui_layer/view/UIHeroList/UIHeroList/bottom/_closeBtn', 'focus': (0.5, 0.5)}
+====click_a_until_b_appear_list：chapter_five_perform_list_3====
+1 / 29
+2 / 29
+3 / 29
+4 / 29
+5 / 29
+6 / 29
+7 / 29
+8 / 29
+9 / 29
+10 / 29
+11 / 29
+12 / 29
+13 / 29
+14 / 29
+15 / 29
+16 / 29
+17 / 29
+18 / 29
+19 / 29
+脚本开始时间: 2025-09-19 17:59:24
+脚本结束时间: 2025-09-19 18:39:57
+总耗时: 0:40:33.163753
+测试结束
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 197, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/runpy.py", line 87, in _run_code
+    exec(code, run_globals)
+  File "/Users/te_ma/项目/三冰自动化测试平台/测试脚本/cocos_uitest-mxltest/scripts/guide_test_Android_Wechat.py", line 1769, in <module>
+    rpc_server(port)(main)()
+  File "/Users/te_ma/项目/三冰自动化测试平台/测试脚本/cocos_uitest-mxltest/common/ws_server.py", line 127, in run_server
+    asyncio.run(server_main())
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 629, in run_until_complete
+    self.run_forever()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 596, in run_forever
+    self._run_once()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 1854, in _run_once
+    event_list = self._selector.select(timeout)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/selectors.py", line 562, in select
+    kev_list = self._selector.control(None, max_ev, timeout)
+KeyboardInterrupt

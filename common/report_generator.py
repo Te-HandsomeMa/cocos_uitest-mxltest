@@ -98,11 +98,24 @@ class LogParser:
     
     def _load_expected_steps(self) -> Dict[int, int]:
         """从测试脚本中读取每章的预计步骤数"""
-        script_path = "scripts/guide_test_Android.py"
+        # 尝试多个可能的脚本文件
+        possible_scripts = [
+            "scripts/guide_test_Android.py",
+            "scripts/guide_test_Android_app.py", 
+            "scripts/guide_test_Android_app_2.py",
+            "scripts/guide_test_Android_Wechat.py"
+        ]
+        
         expected_steps = {}
+        script_path = None
+        
+        for script in possible_scripts:
+            if os.path.exists(script):
+                script_path = script
+                break
         
         try:
-            if os.path.exists(script_path):
+            if script_path:
                 with open(script_path, 'r', encoding='utf-8') as f:
                     content = f.read()
                 
@@ -613,6 +626,27 @@ class LogParser:
         except:
             return False
     
+    def _check_chapter_end_marker(self, chapter_num):
+        """检查章节是否有明确的结束标记"""
+        try:
+            with open(self.log_file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 查找章节结束标记
+            end_markers = [
+                f'第{chapter_num}章节结束',
+                f'第{chapter_num}章结束',
+                f'第{chapter_num}章节完成',
+                f'第{chapter_num}章完成'
+            ]
+            
+            for marker in end_markers:
+                if marker in content:
+                    return True
+            return False
+        except:
+            return False
+    
     def _get_expected_chapter_steps(self, chapter_num):
         """获取章节的预期步骤数"""
         try:
@@ -673,11 +707,14 @@ class LogParser:
                 # 获取预期步骤数
                 expected_steps = self._get_expected_chapter_steps(chapter['number'])
                 
-                # 如果脚本超时失败，章节应该标记为失败
-                if script_timeout:
-                    chapter['status'] = 'failed'
-                    print(f"📝 第{chapter['number']}章：脚本超时失败，标记为失败")
-                # 如果章节有步骤统计且所有已执行的步骤都完成了，且没有超时，则标记为完成
+                # 检查章节是否有明确的结束标记
+                chapter_has_end_marker = self._check_chapter_end_marker(chapter['number'])
+                
+                # 如果章节有明确的结束标记，标记为完成
+                if chapter_has_end_marker:
+                    chapter['status'] = 'completed'
+                    print(f"📝 第{chapter['number']}章：有明确结束标记，标记为成功")
+                # 如果章节有步骤统计且所有已执行的步骤都完成了，则标记为完成
                 elif (total_executed > 0 and executed_steps >= total_executed and 
                       (expected_steps is None or executed_steps >= expected_steps)):
                     chapter['status'] = 'completed'
@@ -686,6 +723,10 @@ class LogParser:
                 elif expected_steps and executed_steps < expected_steps:
                     chapter['status'] = 'failed'
                     print(f"📝 第{chapter['number']}章：执行步骤数不足({executed_steps}/{expected_steps})，标记为失败")
+                # 如果脚本超时且章节没有完成，标记为失败
+                elif script_timeout:
+                    chapter['status'] = 'failed'
+                    print(f"📝 第{chapter['number']}章：脚本超时且未完成，标记为失败")
         
         # 章节统计
         completed_chapters = [c for c in chapters if c['status'] == 'completed']

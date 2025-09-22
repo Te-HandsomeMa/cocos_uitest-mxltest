@@ -23,14 +23,14 @@ devices:
     script_file: "guide_test_Android_Wechat.py"
     enable_recording: false
 
-  - name: "Android设备3"
-    device_id: "172.16.36.4:5555"
-    device_type: "android"
-    ws_port: 5103
-    max_chapter: 5
-    skip_chapters: []
-    script_file: "guide_test_Android_Wechat.py"
-    enable_recording: false
+  # - name: "Android设备3"
+  #   device_id: "172.16.36.4:5555"
+  #   device_type: "android"
+  #   ws_port: 5103
+  #   max_chapter: 5
+  #   skip_chapters: []
+  #   script_file: "guide_test_Android_Wechat.py"
+  #   enable_recording: false
 
 # 执行策略配置
 execution:

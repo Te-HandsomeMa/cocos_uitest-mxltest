@@ -88,7 +88,7 @@ class ElementsData:
         tap_close = {'locator': 'ui_layer/view/UIChapterChangeTime/UIChapterChangeTime/_tap_close', 'focus': (0.5, 0.5)}
 
     class UIChapterLevel:
-        challenge = {'locator': 'ui_layer/view/UIChapterLevel/UIChapterLevel/bottom/_but_challenge:but/_level_hint_node/_lab_btn_text:lab', 'focus': (0.5, 0.5)}
+        challenge = {'locator': 'ui_layer/view/UIChapterLevel/UIChapterLevel/bottom/layout/_but_challenge:but/_level_hint_node/_lab_btn_text:lab', 'focus': (0.5, 0.5)}
         close = {'locator': 'ui_layer/view/UIChapterLevel/UIChapterLevel/bottom/_but_close:but', 'focus': (0.5, 0.5)}
         next_chapter = {'locator': 'ui_layer/view/UIChapterLevel/UIChapterLevel/bottom/_but_challenge:but/_lab_next_level:lab', 'focus': (0.5, 0.5)}
         reward = {'locator': 'ui_layer/view/UIChapterLevel/UIChapterLevel/top/_box_reward/_pb_progress:pro/Bar', 'focus': (0, 0.5)}

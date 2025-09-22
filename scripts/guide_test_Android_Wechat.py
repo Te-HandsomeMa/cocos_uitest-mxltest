@@ -1760,6 +1760,10 @@ async def main(server):
         print(f"脚本结束时间: {end_time.strftime('%Y-%m-%d %H:%M:%S')}")
         print(f"总耗时: {str(duration)}")
         print("测试结束")
+        
+        # 关闭日志记录器，触发报告生成
+        if hasattr(sys.stdout, 'close'):
+            sys.stdout.close()
 # ...existing code...
 
 if __name__ == "__main__":

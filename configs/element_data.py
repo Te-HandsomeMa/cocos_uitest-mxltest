@@ -46,7 +46,7 @@ class ElementsData:
         num = {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_ui_item/_num:lab', 'focus': (1, 0.5)}
         text = {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_edit_count', 'focus': (0, 1)}
         text_2 = {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/Layout/_group_handle/_edit_count/TEXT_LABEL', 'focus': (0, 1)}
-        use = {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use/btn_text', 'focus': (0.5, 0.5)}
+        use = {'locator': 'ui_layer/view/UIBagPopup/UIBagPopup/_group_button/_btn_use', 'focus': (0.5, 0.5)}
 
     class UIBattleEmbattle:
         btn_return = {'locator': 'ui_layer/view/UIBattleEmbattle/UIBattleEmbattle/_but_return:but', 'focus': (0.5, 0.5)}

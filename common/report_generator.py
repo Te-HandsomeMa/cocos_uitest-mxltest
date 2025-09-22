@@ -592,21 +592,100 @@ class LogParser:
         except:
             return duration_str
     
+    def _detect_script_timeout(self):
+        """检测脚本是否超时失败"""
+        try:
+            with open(self.log_file_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 检查是否有超时或脚本失败的标记
+            timeout_indicators = [
+                '超时异常，任务失败',
+                '脚本运行失败',
+                '等待元素消失超过',
+                '超时异常'
+            ]
+            
+            for indicator in timeout_indicators:
+                if indicator in content:
+                    return True
+            return False
+        except:
+            return False
+    
+    def _get_expected_chapter_steps(self, chapter_num):
+        """获取章节的预期步骤数"""
+        try:
+            # 从脚本文件中读取预期步骤数
+            script_path = "scripts/guide_test_Android_app.py"
+            if not os.path.exists(script_path):
+                return None
+                
+            with open(script_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # 查找对应章节的函数
+            chapter_names = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven', 8: 'eight'}
+            chapter_name = chapter_names.get(chapter_num)
+            if not chapter_name:
+                return None
+            
+            chapter_pattern = rf'async def chapter_{chapter_name}\(bp: BasePage\):(.*?)(?=async def chapter_|\Z)'
+            chapter_match = re.search(chapter_pattern, content, re.DOTALL)
+            
+            if not chapter_match:
+                return None
+            
+            chapter_content = chapter_match.group(1)
+            
+            # 查找所有perform_list
+            perform_list_pattern = r'perform_list(?:_\d+)?\s*=\s*\[(.*?)\]'
+            perform_lists = re.findall(perform_list_pattern, chapter_content, re.DOTALL)
+            
+            total_steps = 0
+            for perform_list in perform_lists:
+                # 计算每个perform_list中的步骤数
+                lines = [line.strip() for line in perform_list.split('\n') 
+                        if line.strip() and not line.strip().startswith('#')]
+                steps = len([line for line in lines if line.startswith('ElementsData.')])
+                total_steps += steps
+            
+            return total_steps
+        except:
+            return None
+
     def _calculate_summary(self):
         """计算汇总数据"""
         chapters = self.data['chapters']
         operations = self.data['operations']
         errors = self.data['errors']
         
-        # 后处理：检查没有明确结束标记的章节，如果它们有完整的步骤执行，则标记为完成
+        # 检测脚本是否超时失败
+        script_timeout = self._detect_script_timeout()
+        
+        # 后处理：检查没有明确结束标记的章节
         for chapter in chapters:
             if chapter['status'] != 'completed' and 'step_stats' in chapter:
                 step_stats = chapter['step_stats']
-                # 如果章节有步骤统计且所有步骤都完成了，标记为完成
-                if (step_stats.get('total_all_steps', 0) > 0 and 
-                    step_stats.get('completed_all_steps', 0) >= step_stats.get('total_all_steps', 0)):
+                executed_steps = step_stats.get('completed_all_steps', 0)
+                total_executed = step_stats.get('total_all_steps', 0)
+                
+                # 获取预期步骤数
+                expected_steps = self._get_expected_chapter_steps(chapter['number'])
+                
+                # 如果脚本超时失败，章节应该标记为失败
+                if script_timeout:
+                    chapter['status'] = 'failed'
+                    print(f"📝 第{chapter['number']}章：脚本超时失败，标记为失败")
+                # 如果章节有步骤统计且所有已执行的步骤都完成了，且没有超时，则标记为完成
+                elif (total_executed > 0 and executed_steps >= total_executed and 
+                      (expected_steps is None or executed_steps >= expected_steps)):
                     chapter['status'] = 'completed'
                     print(f"📝 第{chapter['number']}章：根据步骤完成情况标记为成功")
+                # 如果有预期步骤数但实际执行步骤数不足，标记为失败
+                elif expected_steps and executed_steps < expected_steps:
+                    chapter['status'] = 'failed'
+                    print(f"📝 第{chapter['number']}章：执行步骤数不足({executed_steps}/{expected_steps})，标记为失败")
         
         # 章节统计
         completed_chapters = [c for c in chapters if c['status'] == 'completed']

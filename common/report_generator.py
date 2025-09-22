@@ -598,6 +598,16 @@ class LogParser:
         operations = self.data['operations']
         errors = self.data['errors']
         
+        # 后处理：检查没有明确结束标记的章节，如果它们有完整的步骤执行，则标记为完成
+        for chapter in chapters:
+            if chapter['status'] != 'completed' and 'step_stats' in chapter:
+                step_stats = chapter['step_stats']
+                # 如果章节有步骤统计且所有步骤都完成了，标记为完成
+                if (step_stats.get('total_all_steps', 0) > 0 and 
+                    step_stats.get('completed_all_steps', 0) >= step_stats.get('total_all_steps', 0)):
+                    chapter['status'] = 'completed'
+                    print(f"📝 第{chapter['number']}章：根据步骤完成情况标记为成功")
+        
         # 章节统计
         completed_chapters = [c for c in chapters if c['status'] == 'completed']
         failed_chapters = [c for c in chapters if c['status'] != 'completed']
